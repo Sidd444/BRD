@@ -1,5 +1,7 @@
 package com.Elfzone.BRD.ResponseDTOs;
 
+import java.util.UUID;
+
 import lombok.*;
 import lombok.experimental.FieldDefaults;
 
@@ -9,13 +11,13 @@ import lombok.experimental.FieldDefaults;
 @FieldDefaults(level= AccessLevel.PRIVATE)
 @Builder
 public class UserResponseDTO {
+    long registrationNumber;
+    
     String userName;
 
     int age;
 
     String organisation;
-  
-    int registrationNumber;
 
     String emailId;
 

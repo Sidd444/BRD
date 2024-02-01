@@ -1,5 +1,7 @@
 package com.Elfzone.BRD.RequestDTOs;
 
+import java.util.UUID;
+
 import lombok.*;
 import lombok.experimental.FieldDefaults;
 
@@ -14,8 +16,6 @@ public class UserRequestDTO {
     int age;
 
     String organisation;
-
-    int registrationNumber;
 
     String emailId;
 

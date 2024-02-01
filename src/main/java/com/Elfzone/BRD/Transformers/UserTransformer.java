@@ -10,19 +10,18 @@ public class UserTransformer{
         .userName(userRequestDTO.getUserName())
         .age(userRequestDTO.getAge())
         .organisation(userRequestDTO.getOrganisation())
-        .registrationNumber(userRequestDTO.getRegistrationNumber())
         .emailId(userRequestDTO.getEmailId())
         .password(userRequestDTO.getPassword())
         .build();
     }
     public static UserResponseDTO UserToUserResponseDto(User savedUser){
         return UserResponseDTO.builder()
+        .registrationNumber(savedUser.getRegistrationNumber())
         .userName(savedUser.getUserName())
         .age(savedUser.getAge())
         .organisation(savedUser.getOrganisation())
         .emailId(savedUser.getEmailId())
-        .registrationNumber(savedUser.getRegistrationNumber())
-        .message(savedUser.getUserName()+" with registration no. "+savedUser.getRegistrationNumber()+" has been added successfully")
+        .message(savedUser.getUserName()+" with registration no. "+savedUser.getRegistrationNumber()+" has been added successfully!")
         .build();
     }
 }

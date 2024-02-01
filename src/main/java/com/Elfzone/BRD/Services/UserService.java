@@ -3,6 +3,7 @@ package com.Elfzone.BRD.Services;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.Elfzone.BRD.Exceptions.EmailAlreadyExistsException;
 import com.Elfzone.BRD.Exceptions.UserNotFoundException;
 import com.Elfzone.BRD.Models.User;
 import com.Elfzone.BRD.Repositories.UserRepository;
@@ -19,14 +20,16 @@ import java.util.ArrayList;;
 public class UserService {
     @Autowired
     UserRepository userRepository;
-    public UserResponseDTO createUser(UserRequestDTO userRequestDTO){
+    public UserResponseDTO createUser(UserRequestDTO userRequestDTO) throws EmailAlreadyExistsException{
+        User userEmail=userRepository.findByEmailId(userRequestDTO.getEmailId());
+        if(userEmail!=null) throw new EmailAlreadyExistsException("Email is Already Present");
         User user=UserTransformer.UserRequestDtoToUser(userRequestDTO);
         User savedUser=userRepository.save(user);
         return UserTransformer.UserToUserResponseDto(savedUser);
     }
     public UserResponseDTO getUserByEmail(String email) throws UserNotFoundException{
         User user=userRepository.findByEmailId(email);
-        if(user==null) throw new UserNotFoundException("invalid email is");
+        if(user==null) throw new UserNotFoundException("invalid email id");
         return UserTransformer.UserToUserResponseDto(user);
     }
     public List<UserResponseDTO> getAllUsersInformation(){
@@ -36,5 +39,17 @@ public class UserService {
             userInfo.add(UserTransformer.UserToUserResponseDto(u));
         }
         return userInfo;
+    }
+    public UserResponseDTO updateUser(UserRequestDTO userRequestDTO) throws UserNotFoundException{
+        User user=userRepository.findByEmailId(userRequestDTO.getEmailId());
+        if(user==null) throw new UserNotFoundException("Invalid email id");
+        User savedUser=userRepository.save(user);
+        return UserTransformer.UserToUserResponseDto(savedUser);
+    }
+    public boolean deleteUser(String emailId) throws UserNotFoundException{
+        User user=userRepository.findByEmailId(emailId);
+        if(user==null) throw new UserNotFoundException("User Does Not Exists");
+        userRepository.delete(user);
+        return true;
     }
 }
