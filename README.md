@@ -5,7 +5,7 @@ It utilizes Spring Web, Spring Data JPA, Lombok, MySQL Driver, and Swagger for A
 
 ## Project Demo
 
-Watch the project demo [https://drive.google.com/file/d/1fLuBRcSNaZWu55vEJ40bOzOVVvwil4L8/view?usp=drivesdk](link_to_video).
+Watch the project demo [here](https://drive.google.com/file/d/1fLuBRcSNaZWu55vEJ40bOzOVVvwil4L8/view?usp=drivesdk).
 
 ## Functionalities
 
@@ -29,7 +29,7 @@ Watch the project demo [https://drive.google.com/file/d/1fLuBRcSNaZWu55vEJ40bOzO
 
 ## Swagger API Documentation
 
-Access the Swagger API documentation [http://localhost:8080/swagger-ui.html](link_for_usage_using_swagger).
+Access the Swagger API documentation [here](http://localhost:8080/swagger-ui.html).
 
 
 
